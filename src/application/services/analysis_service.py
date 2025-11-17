@@ -4,7 +4,7 @@
 """Analysis Service - Orchestrates file analysis"""
 
 from pathlib import Path
-from typing import List
+from typing import List, Dict
 import time
 from datetime import datetime
 

@@ -8,7 +8,6 @@ from typing import Dict, Any, Optional
 import yaml
 import json
 
-
 class ConfigLoader:
     """Loads and manages application configuration"""
     

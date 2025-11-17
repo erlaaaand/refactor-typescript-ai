@@ -5,7 +5,7 @@
 
 import json
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 from ...domain.entities.test_file import TestFile
 from ...domain.repositories.test_file_repository import TestFileRepository

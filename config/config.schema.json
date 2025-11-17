@@ -1,183 +1,201 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Test Refactor AI Configuration",
-  "description": "Configuration schema for Test Refactor AI v2.1",
-  "type": "object",
-  "required": ["project", "scanning", "thresholds"],
-  "properties": {
-    "project": {
-      "type": "object",
-      "required": ["name", "version"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Project name"
-        },
-        "version": {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$",
-          "description": "Project version (semver)"
-        },
-        "description": {
-          "type": "string"
-        }
-      }
-    },
-    "scanning": {
-      "type": "object",
-      "properties": {
-        "root_directory": {
-          "type": "string",
-          "description": "Root directory to scan"
-        },
-        "max_workers": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 16,
-          "default": 4
-        },
-        "exclude_dirs": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "file_patterns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "max_file_size_mb": {
-          "type": "number",
-          "minimum": 0.1,
-          "maximum": 100
-        }
-      }
-    },
-    "thresholds": {
-      "type": "object",
-      "properties": {
-        "complexity": {
-          "type": "object",
-          "properties": {
-            "simple_max": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
-            },
-            "medium_max": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
-            },
-            "complex_min": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Test Refactor AI Configuration",
+    "description": "Configuration schema for Test Refactor AI v2.1",
+    "type": "object",
+    "required": [
+        "project",
+        "scanning",
+        "thresholds"
+    ],
+    "properties": {
+        "project": {
+            "type": "object",
+            "required": [
+                "name",
+                "version"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Project name"
+                },
+                "version": {
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                    "description": "Project version (semver)"
+                },
+                "description": {
+                    "type": "string"
+                }
             }
-          }
         },
-        "quality": {
-          "type": "object",
-          "properties": {
-            "excellent_min": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
-            },
-            "good_min": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
-            },
-            "fair_min": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 100
+        "scanning": {
+            "type": "object",
+            "properties": {
+                "root_directory": {
+                    "type": "string",
+                    "description": "Root directory to scan"
+                },
+                "max_workers": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 16,
+                    "default": 4
+                },
+                "exclude_dirs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "file_patterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "max_file_size_mb": {
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 100
+                }
             }
-          }
+        },
+        "thresholds": {
+            "type": "object",
+            "properties": {
+                "complexity": {
+                    "type": "object",
+                    "properties": {
+                        "simple_max": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        "medium_max": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        "complex_min": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        }
+                    }
+                },
+                "quality": {
+                    "type": "object",
+                    "properties": {
+                        "excellent_min": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        "good_min": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        "fair_min": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        }
+                    }
+                },
+                "refactoring": {
+                    "type": "object",
+                    "properties": {
+                        "max_lines": {
+                            "type": "integer",
+                            "minimum": 50
+                        },
+                        "max_categories": {
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "max_tests": {
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "max_mocks": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "max_hooks": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    }
+                }
+            }
+        },
+        "complexity_weights": {
+            "type": "object"
+        },
+        "quality_metrics": {
+            "type": "object"
         },
         "refactoring": {
-          "type": "object",
-          "properties": {
-            "max_lines": {
-              "type": "integer",
-              "minimum": 50
-            },
-            "max_categories": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "max_tests": {
-              "type": "integer",
-              "minimum": 1
-            },
-            "max_mocks": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "max_hooks": {
-              "type": "integer",
-              "minimum": 0
+            "type": "object"
+        },
+        "output": {
+            "type": "object",
+            "properties": {
+                "base_directory": {
+                    "type": "string"
+                },
+                "formats": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "yaml",
+                            "html",
+                            "markdown"
+                        ]
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "complexity_weights": {
-      "type": "object"
-    },
-    "quality_metrics": {
-      "type": "object"
-    },
-    "refactoring": {
-      "type": "object"
-    },
-    "output": {
-      "type": "object",
-      "properties": {
-        "base_directory": {
-          "type": "string"
         },
-        "formats": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["json", "yaml", "html", "markdown"]
-          }
-        }
-      }
-    },
-    "logging": {
-      "type": "object",
-      "properties": {
-        "level": {
-          "type": "string",
-          "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
-        }
-      }
-    },
-    "cache": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean"
+        "logging": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "string",
+                    "enum": [
+                        "DEBUG",
+                        "INFO",
+                        "WARNING",
+                        "ERROR",
+                        "CRITICAL"
+                    ]
+                }
+            }
         },
-        "ttl_hours": {
-          "type": "integer",
-          "minimum": 1
+        "cache": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "ttl_hours": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "performance": {
+            "type": "object"
+        },
+        "features": {
+            "type": "object"
+        },
+        "cli": {
+            "type": "object"
         }
-      }
-    },
-    "performance": {
-      "type": "object"
-    },
-    "features": {
-      "type": "object"
-    },
-    "cli": {
-      "type": "object"
     }
-  }
 }
