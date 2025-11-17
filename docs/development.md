@@ -64,7 +64,7 @@ pre-commit run --all-files
 
 ```bash
 # Using Python module
-python -m src.interfaces.cli.main analyze
+python -m src.interfaces.cli.main analyze 'FOLDER_PATH'
 
 # Using installed command
 refactor-ai analyze --root backend/src

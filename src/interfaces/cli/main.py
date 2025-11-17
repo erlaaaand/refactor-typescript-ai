@@ -11,10 +11,10 @@ from rich.table import Table
 from pathlib import Path
 from typing import Optional
 
-from .commands.analyze_command import AnalyzeCommand
-from .commands.learn_command import LearnCommand
-from .commands.practice_command import PracticeCommand
-from .commands.execute_command import ExecuteCommand
+from src.interfaces.cli.commands.analyze_command import AnalyzeCommand
+from src.interfaces.cli.commands.learn_command import LearnCommand
+from src.interfaces.cli.commands.practice_command import PracticeCommand
+from src.interfaces.cli.commands.execute_command import ExecuteCommand
 
 # Initialize
 app = typer.Typer(
@@ -277,7 +277,3 @@ def version():
         "[dim]Built with ❤️  for developers[/dim]",
         border_style="cyan"
     ))
-
-
-if __name__ == "__main__":
-    app()

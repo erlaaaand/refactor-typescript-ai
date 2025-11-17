@@ -102,11 +102,8 @@ class ExecuteCommand:
             # Show what would be created
             if plan['action'] == 'split_by_category':
                 self.console.print("  [dim]Would create:[/dim]")
-                # Show files from operations
-                for op in plan.get("operations", [])[:5]:  # Show first 5
-                    self.console.print(f"    - {op.get("target_path", "unknown")}")
-                if len(plan.get("operations", [])) > 5:
-                    self.console.print(f"    - ... and {len(plan.get("operations", [])) - 5} more files")
+                self.console.print("    - file1.category1.spec.ts")
+                self.console.print("    - file1.category2.spec.ts")
             elif plan['action'] == 'split_by_concern':
                 self.console.print("  [dim]Would create:[/dim]")
                 self.console.print("    - file1.part1.spec.ts")

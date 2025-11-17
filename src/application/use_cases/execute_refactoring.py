@@ -30,6 +30,10 @@ class ExecuteRefactoringUseCase:
     def execute(self, request: ExecuteRefactoringRequest) -> ExecutionResult:
         """Execute the refactoring use case"""
         
+        print("DEBUG ExecuteRefactoringUseCase.execute called")
+        print("DEBUG Request plans:", len(request.plans))
+        print("DEBUG Dry run:", request.dry_run)
+        print("DEBUG Verbose:", request.verbose)
         if request.verbose:
             mode = "DRY RUN" if request.dry_run else "LIVE EXECUTION"
             print(f"⚡ Executing refactoring plans - Mode: {mode}")
