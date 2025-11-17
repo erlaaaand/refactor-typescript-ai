@@ -1,0 +1,178 @@
+# =============================================================================
+# config/config.yaml
+# =============================================================================
+# Configuration file for Test Refactor AI
+
+# Project settings
+project:
+  name: "test-refactor-ai"
+  version: "2.1.0"
+  description: "Intelligent TypeScript test file refactoring with AI"
+
+# Scanning configuration
+scanning:
+  root_directory: "backend/src"
+  max_workers: 4
+  exclude_dirs:
+    - "node_modules"
+    - "dist"
+    - "build"
+    - ".git"
+    - "coverage"
+    - ".next"
+    - "out"
+  file_patterns:
+    - "*.spec.ts"
+    - "*.test.ts"
+    - "*.spec.tsx"
+    - "*.test.tsx"
+  max_file_size_mb: 5
+
+# Analysis thresholds
+thresholds:
+  complexity:
+    simple_max: 30
+    medium_max: 60
+    complex_min: 60
+
+  quality:
+    excellent_min: 80
+    good_min: 60
+    fair_min: 40
+
+  refactoring:
+    max_lines: 300
+    max_categories: 6
+    max_tests: 20
+    max_mocks: 5
+    max_hooks: 3
+
+# Complexity weights
+complexity_weights:
+  lines:
+    weight: 0.30
+    thresholds:
+      high: 500
+      medium: 300
+      low: 150
+
+  categories:
+    weight: 0.25
+    thresholds:
+      high: 10
+      medium: 6
+      low: 3
+
+  tests:
+    weight: 0.20
+    thresholds:
+      high: 30
+      medium: 20
+      low: 10
+
+  mocks:
+    weight: 0.15
+    thresholds:
+      high: 5
+      medium: 3
+      low: 1
+
+  hooks:
+    weight: 0.10
+    thresholds:
+      high: 3
+      medium: 2
+      low: 1
+
+# Quality metrics
+quality_metrics:
+  assertion_ratio:
+    poor: 0.5
+    good: 1.0
+
+  cyclomatic_complexity:
+    acceptable: 50
+    high: 100
+
+  code_smells:
+    penalty_per_smell: 5
+
+  bonuses:
+    has_structure: 10
+    has_setup: 5
+
+# Refactoring strategies
+refactoring:
+  strategies:
+    split_by_category:
+      priority: 1
+      condition: "categories > 6"
+      description: "Split file by test categories"
+
+    split_by_concern:
+      priority: 2
+      condition: "tests > 20"
+      description: "Split by testing concerns"
+
+    extract_shared:
+      priority: 3
+      condition: "mocks > 5"
+      description: "Extract shared utilities"
+
+    keep_as_is:
+      priority: 4
+      condition: "complexity < 30"
+      description: "File is well-organized"
+
+# Output configuration
+output:
+  base_directory: "output"
+  subdirectories:
+    training_data: "training_data"
+    practice_runs: "practice_runs"
+    execution_results: "execution_results"
+    backups: "backups"
+
+  formats:
+    - "json"
+    - "html"
+
+  report_options:
+    include_statistics: true
+    include_recommendations: true
+    include_code_snippets: false
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "refactor-ai.log"
+  console: true
+
+# Cache configuration
+cache:
+  enabled: true
+  directory: ".cache"
+  ttl_hours: 24
+  max_size_mb: 100
+
+# Performance settings
+performance:
+  parallel_processing: true
+  chunk_size: 10
+  timeout_seconds: 300
+  memory_limit_mb: 512
+
+# Feature flags
+features:
+  ai_suggestions: true
+  auto_backup: true
+  dry_run_default: true
+  interactive_mode: false
+
+# CLI settings
+cli:
+  show_progress: true
+  colored_output: true
+  verbose_default: false
+  confirm_execution: true
